@@ -39,7 +39,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage (int amount, Vector3 hitPoint)
     {
-        if(isDead)
+        if (isDead)
             return;
 
         enemyAudio.Play ();
@@ -59,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
     void Death ()
     {
         isDead = true;
-
+        
         capsuleCollider.isTrigger = true;
 
         anim.SetTrigger ("Dead");
@@ -74,7 +74,7 @@ public class EnemyHealth : MonoBehaviour
         GetComponent <NavMeshAgent> ().enabled = false;
         GetComponent <Rigidbody> ().isKinematic = true;
         isSinking = true;
-        //ScoreManager.score += scoreValue;
+        ScoreManager.score += scoreValue;
         Destroy (gameObject, 2f);
     }
 }
